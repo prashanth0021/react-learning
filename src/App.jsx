@@ -1,6 +1,7 @@
 
-import TaskList from './components/TaskList';
-import './App.css';
+import Counter from './components/Counter';
+import React from 'react';
+
 
 function App() {
 //    const fruits= [{id:1, name:'Apple', calorie:95},
@@ -15,7 +16,7 @@ function App() {
 //                    {id:10, name:'broccoli', calorie:50}];
       return(
       <>
-      <TaskList/>
+      <Counter/>
       </>
 
       );

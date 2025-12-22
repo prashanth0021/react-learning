@@ -3,5 +3,5 @@ import './App.css';
 import Tasklist from './components/Tasklist';
 
 export default function App() {
-  return <div className="app-container"><Tasklist /></div>;
+  return <Tasklist />;
 }

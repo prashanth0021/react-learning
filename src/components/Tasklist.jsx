@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 const TaskList = () => {
   const [input, setInput] = useState('');
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState(false);
-
-  const completedCount = tasks.filter(t => t.completed).length;
+  const completedCount = useMemo(
+    () => tasks.filter(t => t.completed).length,
+    [tasks]
+  );
 
   const handleChange = e => {
     setInput(e.target.value);
@@ -18,17 +20,21 @@ const TaskList = () => {
       setError(true);
       return;
     }
-    setTasks([...tasks, { text: input.trim(), completed: false }]);
+    const newTask = {
+      id: tasks.length + 1,
+      text: input.trim(),
+      completed: false
+    };
+    setTasks([...tasks, newTask]);
     setInput('');
     setError(false);
   };
-
-  const handleCheckbox = idx => {
+  const handleCheckbox = taskId => {
     setTasks(prevTasks => {
-      const updated = prevTasks.map((t, i) =>
-        i === idx ? { ...t, completed: !t.completed } : t
+      const updated = prevTasks.map(task =>
+        task.id === taskId ? { ...task, completed: !task.completed } : task
       );
-      const justCompleted = !prevTasks[idx].completed;
+      const justCompleted = !prevTasks.find(task => task.id === taskId).completed;
       if (justCompleted) {
         alert('The task is completed!');
       }
@@ -59,15 +65,15 @@ const TaskList = () => {
         <div className="text-red-500 text-sm mt-1">No input</div>
       )}
       <ul className="mt-6 space-y-2">
-        {tasks.map((task, idx) => (
+        {tasks.map(task => (
           <li
-            key={idx}
+            key={task.id}
             className="flex items-center bg-gray-50 px-3 py-2 rounded border border-gray-200"
           >
             <input
               type="checkbox"
               checked={task.completed}
-              onChange={() => handleCheckbox(idx)}
+              onChange={() => handleCheckbox(task.id)}
               className="mr-3 accent-blue-600 w-4 h-4"
             />
             <span className={`flex-1 ${task.completed ? 'line-through text-gray-400' : ''}`}>

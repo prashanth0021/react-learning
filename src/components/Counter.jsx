@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React,{useEffect,useState } from 'react';
 import './Counter.css';
 const Counter = () => {
   const MIN = 3;
@@ -13,6 +13,12 @@ const Counter = () => {
   const decrement = () => {
     setCounter(c => (c > MIN ? c - 1 : c));
   };
+  useEffect(() => {
+    console.log('Counter component mounted!');
+  }, []);
+  useEffect(() => {
+    console.log(`Counter value changed: ${counter}`);
+  }, [counter]);
 
   return (
     <div className="counter-container">

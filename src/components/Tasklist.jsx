@@ -10,15 +10,18 @@ const TaskList = () => {
   );
 
   const handleChange = e => {
-    setInput(e.target.value);
+  setInput(e.target.value);
+   if(error){
     setError(false);
+   }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     if (!input.trim()) {
-      setError(true);
-      return;
+      if(error){
+       setError(false); 
+      } 
     }
     const newTask = {
       id: tasks.length + 1,
@@ -29,18 +32,19 @@ const TaskList = () => {
     setInput('');
     setError(false);
   };
-  const handleCheckbox = taskId => {
-    setTasks(prevTasks => {
-      const updated = prevTasks.map(task =>
-        task.id === taskId ? { ...task, completed: !task.completed } : task
-      );
-      const justCompleted = !prevTasks.find(task => task.id === taskId).completed;
-      if (justCompleted) {
-        alert('The task is completed!');
-      }
-      return updated;
-    });
-  };
+ const handleCheckbox = (taskId) => {
+  setTasks((prevTasks) => {
+    const targetTask = prevTasks.find(task => task.id === taskId);
+    const updatedTasks = prevTasks.map(task =>
+      task.id === taskId ? { ...task, completed: !task.completed } : task
+    );
+    if (targetTask && !targetTask.completed) {
+      alert('The task is completed!');
+    }
+
+    return updatedTasks;
+  });
+};
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded shadow">

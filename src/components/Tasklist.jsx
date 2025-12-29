@@ -16,22 +16,21 @@ const TaskList = () => {
    }
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (!input.trim()) {
-      if(error){
-       setError(false); 
-      } 
-    }
-    const newTask = {
-      id: tasks.length + 1,
-      text: input.trim(),
-      completed: false
-    };
-    setTasks([...tasks, newTask]);
-    setInput('');
-    setError(false);
+const handleSubmit = e => {
+  e.preventDefault();
+  if (!input.trim()) {
+    setError(true); 
+    return;         
+  }
+  const newTask = {
+    id: tasks.length + 1,
+    text: input.trim(),
+    completed: false
   };
+  setTasks([...tasks, newTask]);
+  setInput('');
+  setError(false);
+};
  const handleCheckbox = (taskId) => {
   setTasks((prevTasks) => {
     const targetTask = prevTasks.find(task => task.id === taskId);

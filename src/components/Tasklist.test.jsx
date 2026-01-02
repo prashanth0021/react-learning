@@ -1,6 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import TaskList from './Tasklist';
+jest.mock('@components/Button');
+
 
 describe('TaskList', () => {
   let alertMock;

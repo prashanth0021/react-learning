@@ -1,0 +1,16 @@
+import type { ComboboxProps } from "./types";
+export declare function Combobox(props: ComboboxProps): import("react/jsx-runtime").JSX.Element;
+export { ComboboxActions } from "./components/actions";
+export { ComboboxApply } from "./components/apply";
+export { ComboboxContent } from "./components/content";
+export { ComboboxContext, useComboboxContext } from "./components/context";
+export { ComboboxEmpty } from "./components/empty";
+export { ComboboxGroup } from "./components/group";
+export { ComboboxItem } from "./components/item";
+export { ComboboxList } from "./components/list";
+export { ComboboxOption } from "./components/option";
+export { ComboboxSearch } from "./components/search";
+export { ComboboxSelectionIndicator } from "./components/selection-indicator";
+export { ComboboxTrigger } from "./components/trigger";
+export type * from "./types";
+export default Combobox;

@@ -1,0 +1,13 @@
+import type * as React from "react";
+import { Drawer as DrawerPrimitive } from "vaul";
+declare const Drawer: React.FC<React.ComponentProps<typeof DrawerPrimitive.Root>>;
+declare const DrawerTrigger: React.FC<React.ComponentProps<typeof DrawerPrimitive.Trigger>>;
+declare const DrawerPortal: React.FC<React.ComponentProps<typeof DrawerPrimitive.Portal>>;
+declare const DrawerClose: React.FC<React.ComponentProps<typeof DrawerPrimitive.Close>>;
+declare const DrawerOverlay: React.FC<React.ComponentProps<typeof DrawerPrimitive.Overlay>>;
+declare const DrawerContent: React.FC<React.ComponentProps<typeof DrawerPrimitive.Content>>;
+declare const DrawerHeader: React.FC<React.ComponentProps<"div">>;
+declare const DrawerFooter: React.FC<React.ComponentProps<"div">>;
+declare const DrawerTitle: React.FC<React.ComponentProps<typeof DrawerPrimitive.Title>>;
+declare const DrawerDescription: React.FC<React.ComponentProps<typeof DrawerPrimitive.Description>>;
+export { Drawer, DrawerPortal, DrawerOverlay, DrawerTrigger, DrawerClose, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription, };

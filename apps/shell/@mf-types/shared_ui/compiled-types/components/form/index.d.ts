@@ -1,0 +1,43 @@
+import { Slot } from "@radix-ui/react-slot";
+import * as React from "react";
+import type { FormProviderProps } from "react-hook-form";
+import { type ControllerProps, type FieldPath, type FieldValues, useForm } from "react-hook-form";
+import { Label } from "@/components/label";
+type FormProps = FormProviderProps;
+declare const Form: <TFieldValues extends FieldValues, TContext = any, TTransformedValues = TFieldValues>(props: FormProviderProps<TFieldValues, TContext, TTransformedValues>) => React.JSX.Element;
+declare const FormField: <TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({ ...props }: ControllerProps<TFieldValues, TName>) => import("react/jsx-runtime").JSX.Element;
+declare const useFormField: () => {
+    invalid: boolean;
+    isDirty: boolean;
+    isTouched: boolean;
+    isValidating: boolean;
+    error?: import("react-hook-form").FieldError;
+    id: string;
+    name: string;
+    formItemId: string;
+    formDescriptionId: string;
+    formMessageId: string;
+};
+type FormItemProps = React.HTMLAttributes<HTMLDivElement>;
+declare const FormItem: ({ className, ...props }: FormItemProps) => import("react/jsx-runtime").JSX.Element;
+type FormLabelProps = React.ComponentProps<typeof Label>;
+declare const FormLabel: ({ className, ...props }: FormLabelProps) => import("react/jsx-runtime").JSX.Element;
+type FormControlProps = React.ComponentProps<typeof Slot>;
+declare const FormControl: ({ ...props }: FormControlProps) => import("react/jsx-runtime").JSX.Element;
+declare const FormDescription: ({ className, ...props }: React.ComponentProps<"p">) => import("react/jsx-runtime").JSX.Element;
+type FormMessageProps = React.HTMLAttributes<HTMLParagraphElement>;
+declare const FormMessage: ({ className, ...props }: FormMessageProps) => import("react/jsx-runtime").JSX.Element | null;
+export type LeftIconFn = (value: string) => React.ReactNode;
+export interface SimpleFormFieldProps<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> {
+    form: ReturnType<typeof useForm<TFieldValues>>;
+    name: TName;
+    label: string;
+    placeholder?: string;
+    required?: boolean;
+    inputType?: string;
+    leftIcon?: LeftIconFn;
+    disabled?: boolean;
+}
+declare function SimpleFormField<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({ form, name, label, placeholder, required, inputType, leftIcon, disabled, }: SimpleFormFieldProps<TFieldValues, TName>): import("react/jsx-runtime").JSX.Element;
+export { useFormField, Form, FormItem, FormLabel, FormControl, FormDescription, FormMessage, FormField, useForm, SimpleFormField, };
+export type { FormProps, FormItemProps, FormControlProps, FormLabelProps, FormMessageProps, };

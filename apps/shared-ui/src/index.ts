@@ -1,2 +1,2 @@
 export { MenuItem } from "./components/MenuItem";
-// export { SideNav } from "./components/SideNav"
+export { Sidebar } from "./components/Sidebar";

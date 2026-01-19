@@ -24,7 +24,8 @@ export default defineConfig({
     pluginModuleFederation({
       name: "shared_ui",
       exposes: {
-        "./Menu": "./src/components/MenuItem",
+        "./MenuItem": "./src/components/MenuItem",
+        "./Sidebar": "./src/components/Sidebar",
       },
       shared: {
         react: {

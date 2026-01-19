@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 
 const MFE1 = lazy(() => import("mfe1/App"));
 const MFE2 = lazy(() => import("mfe2/App"));
